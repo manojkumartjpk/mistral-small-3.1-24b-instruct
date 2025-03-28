@@ -57,12 +57,12 @@ class InferlessPythonModel:
         with torch.no_grad():
             generation = self.model.generate(
                 tokenized_chat,
-                max_new_tokens=request.max_tokens,
-                temperature=request.temperature,
-                top_p=request.top_p,
-                top_k=request.top_k,
-                do_sample=request.do_sample,
-                repetition_penalty=request.repetition_penalty,
+                max_new_tokens=100,
+                temperature=0.7,
+                top_p=0.1,
+                top_k=40,
+                do_sample=False,
+                repetition_penalty=1.18,
             )
             generated_text = self.tokenizer.decode(generation[0], skip_special_tokens=True)
 
