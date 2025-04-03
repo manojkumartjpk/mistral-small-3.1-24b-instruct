@@ -1,4 +1,7 @@
 import os
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
+
 os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "1"
 from huggingface_hub import snapshot_download
 from pydantic import BaseModel, Field
@@ -62,7 +65,7 @@ class InferlessPythonModel:
                 repetition_penalty=request.repetition_penalty,
             )
             generated_text = self.tokenizer.decode(generation[0], skip_special_tokens=True)
-            print("generated_text-->",generated_text.encode('utf-8', 'ignore').decode('utf-8'),flush=True)
+            print("generated_text-->" ,generated_text ,flush=True)
 
         return ResponseObjects(generated_text=generated_text)
 
