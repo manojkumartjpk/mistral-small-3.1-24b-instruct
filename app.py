@@ -62,7 +62,7 @@ class InferlessPythonModel:
                 repetition_penalty=request.repetition_penalty,
             )
             generated_text = self.tokenizer.decode(generation[0], skip_special_tokens=True)
-            print("generated_text-->",generated_text.decode(),flush=True)
+            print("generated_text-->",generated_text.encode('utf-8', 'ignore').decode('utf-8'),flush=True)
 
         return ResponseObjects(generated_text=generated_text)
 
